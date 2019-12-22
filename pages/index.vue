@@ -1,7 +1,7 @@
 <template>
 	<v-layout>
 		<v-row>
-			<v-col>
+			<v-col class="col-12">
 				<v-card>
 					<v-card-text>
 						<v-row>
@@ -11,7 +11,13 @@
 									:mode="mode"
 									@update:mode="mode = $event"
 									v-model="background"
+									width="400"
 								></v-color-picker>
+							</v-col>
+							<v-col
+								class="headline col-auto d-flex justify-enter align-center"
+							>
+								<div>+</div>
 							</v-col>
 							<v-col>
 								<div class="mb-2 headline">Overlay</div>
@@ -21,13 +27,66 @@
 									v-model="overlay"
 								></v-color-picker>
 							</v-col>
+							<v-col
+								class="headline col-auto d-flex justify-enter align-center"
+							>
+								<div>=</div>
+							</v-col>
 							<v-col>
-								<div class="mb-2 headline">Target</div>
+								<div class="mb-2 headline">Result</div>
 								<v-color-picker
 									:mode="mode"
 									@update:mode="mode = $event"
 									:value="backgroundPlusOverlay"
 								></v-color-picker>
+							</v-col>
+						</v-row>
+					</v-card-text>
+				</v-card>
+			</v-col>
+			<v-col class="col-12">
+				<v-card>
+					<v-card-text>
+						<v-row>
+							<v-col>
+								<div class="mb-2 headline">Result</div>
+								<!-- <v-color-picker
+									:mode="mode"
+									@update:mode="mode = $event"
+									:value="backgroundPlusOverlay"
+								></v-color-picker> -->
+							</v-col>
+							<v-col
+								class="headline col-auto d-flex justify-enter align-center"
+							>
+								<div>-</div>
+							</v-col>
+							<v-col>
+								<div class="mb-2 headline">Background</div>
+								<v-color-picker
+									:mode="mode"
+									@update:mode="mode = $event"
+									v-model="background"
+									width="400"
+								></v-color-picker>
+							</v-col>
+							<v-col
+								class="headline col-auto d-flex justify-enter align-center"
+							>
+								<div>=</div>
+							</v-col>
+							<v-col>
+								<div class="mb-2 headline">Overlay</div>
+								<v-color-picker
+									:mode="mode"
+									@update:mode="mode = $event"
+									v-model="overlay"
+								></v-color-picker>
+							</v-col>
+							<v-col
+								class="headline col-auto d-flex justify-enter align-center"
+							>
+								<div>=</div>
 							</v-col>
 						</v-row>
 					</v-card-text>
@@ -44,14 +103,14 @@ export default {
 		return {
 			background: {
 				r: 255,
-				g: 255,
-				b: 255,
+				g: 0,
+				b: 0,
 				a: 1
 			},
 			overlay: {
-				r: 255,
-				g: 255,
-				b: 255,
+				r: 0,
+				g: 0,
+				b: 0,
 				a: 0.5
 			},
 			mode: 'hexa'
@@ -64,7 +123,6 @@ export default {
 				this.overlay
 			).toHex8String()
 
-			console.log(x)
 			return x
 		}
 	}
